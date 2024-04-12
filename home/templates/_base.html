@@ -1,0 +1,52 @@
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=
+            "width=device-width, initial-scale=1.0">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+            rel="stylesheet"
+    />
+    <title>Harmonie Obenheim</title>
+
+    {% compress css %}
+        <link rel="stylesheet"
+              href="{% static 'src/output.css' %}">
+    {% endcompress %}
+
+</head>
+<header class="bg-background font-poppins my-[40px]">
+    <div class="flex justify-between items-center h-full">
+        <img src="{% static  "logo.png" %}" alt="Logo">
+        <div class="flex flex-row items-end gap-x-8 text-[25px]">
+            {% url 'home' as home_url %}
+            {% url 'events' as event_url %}
+            {% url 'galerie' as gallery_url %}
+            {% url 'contact' as contact_url %}
+            <a href="{{ home_url }}" class="{% if request.path == home_url %}font-black{% endif %}">Accueil</a>
+            <a href="{{ event_url }}" class="{% if request.path == event_url %}font-black{% endif %}">Évènements</a>
+            <a href="{{ gallery_url }}" class="{% if request.path == gallery_url %}font-black{% endif %}">Galerie</a>
+            <a href="{{ contact_url }}" class="{% if request.path == contact_url %}font-black{% endif %}">Contact</a>
+        </div>
+    </div>
+</header>
+
+<body class="width-full height-full bg-background mx-28">
+<div class="">
+    {% block content %}
+    {% endblock content %}
+</div>
+</body>
+
+<footer class="bg-background">
+    <div class="">
+    </div>
+</footer>
+
+</html>
