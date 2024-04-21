@@ -2,51 +2,84 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content=
             "width=device-width, initial-scale=1.0">
-    <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
-            rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
     <title>Harmonie Obenheim</title>
 
     {% compress css %}
         <link rel="stylesheet"
               href="{% static 'src/output.css' %}">
     {% endcompress %}
-
 </head>
-<header class="bg-background font-poppins my-[40px]">
-    <div class="flex justify-between items-center h-full">
-        <img src="{% static  "logo.png" %}" alt="Logo">
-        <div class="flex flex-row items-end gap-x-8 text-[25px]">
+<header class="hidden md:flex bg-background font-poppins my-[40px] mx-28">
+    <div class="flex justify-between items-center h-full w-full">
+        <img src="{% static "logo.png" %}" alt="Logo" class="w-1/6 lg:size-fit">
+        <div class="text-[15px] flex flex-row items-end gap-x-8 lg:text-[25px]">
             {% url 'home' as home_url %}
             {% url 'events' as event_url %}
             {% url 'galerie' as gallery_url %}
             {% url 'contact' as contact_url %}
-            <a href="{{ home_url }}" class="{% if request.path == home_url %}font-black{% endif %}">Accueil</a>
-            <a href="{{ event_url }}" class="{% if request.path == event_url %}font-black{% endif %}">Évènements</a>
-            <a href="{{ gallery_url }}" class="{% if request.path == gallery_url %}font-black{% endif %}">Galerie</a>
-            <a href="{{ contact_url }}" class="{% if request.path == contact_url %}font-black{% endif %}">Contact</a>
+            <a href="{{ home_url }}" class="{% if request.path == home_url %}font-black{% endif %}"><span
+                    class="link link-underline link-underline-black">Accueil</span></a>
+            <a href="{{ event_url }}"
+               class="{% if request.path|slice:':11' == '/evenements' %}font-black{% endif %}"><span
+                    class="link link-underline link-underline-black">Évènements</span></a>
+            <a href="{{ gallery_url }}" class="{% if request.path == gallery_url %}font-black{% endif %}"><span
+                    class="link link-underline link-underline-black">Galerie</span></a>
+            <a href="{{ contact_url }}" class="{% if request.path == contact_url %}font-black{% endif %}"><span
+                    class="link link-underline link-underline-black">Contact</span></a>
         </div>
     </div>
+
 </header>
 
-<body class="width-full height-full bg-background mx-28">
-<div class="">
-    {% block content %}
-    {% endblock content %}
-</div>
+<body class="width-full flex flex-col min-h-screen bg-background h-screen font-poppins">
+{% block content %}
+
+{% endblock content %}
 </body>
 
-<footer class="bg-background">
-    <div class="">
+<footer class="bg-button mt-auto">
+    <div class="flex flex-row px-28 py-[20px] justify-between text-text-white font-poppins text-sm lg:text-lg font-bold">
+        <div>
+            <p>Répétitions les vendredis soirs</p>
+            <p>20h à 22h</p>
+            <p>Salle des fêtes</p>
+            <p>Obenheim</p>
+        </div>
+        <div class="flex flex-col items-end">
+            <p>Contact</p>
+            <p>Thierry HANTZBERG</p>
+            <p>06 88 28 69 20</p>
+        </div>
     </div>
 </footer>
+<style>
+    .link-underline {
+        border-bottom-width: 0;
+        background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+        background-size: 0 3px;
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size .5s ease-in-out;
+    }
 
+    .link-underline-black {
+        background-image: linear-gradient(transparent, transparent), linear-gradient(#631D4C, #631D4C)
+    }
+
+    .link-underline:hover {
+        background-size: 100% 3px;
+        background-position: 0 100%
+    }
+</style>
 </html>
