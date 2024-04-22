@@ -19,13 +19,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g33+&1@a6uc#vgfh9ltx@(4u1wz*tlk86@f-xdl$094f@j5w&q'
+SECRET_KEY = '^60abyf&t+cym_hxu-lk3sc8+5@$h#f6p)kaqa*2w3*9ms6h6i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['.harmonie-obenheim.fr', '.localhost']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,4 @@ MEDIA_ROOT = BASE_DIR / "home/media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-COMPRESS_ROOT = BASE_DIR / 'home/static'
-COMPRESS_ENABLED = True
-STATICFILES_FINDERS = ['compressor.finders.CompressorFinder', 'django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']

@@ -1,4 +1,3 @@
-{% load compress %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -15,10 +14,8 @@
           rel="stylesheet">
     <title>Harmonie Obenheim</title>
 
-    {% compress css %}
         <link rel="stylesheet"
               href="{% static 'src/output.css' %}">
-    {% endcompress %}
 </head>
 <header class="hidden md:flex bg-background font-poppins my-[40px] mx-28">
     <div class="flex justify-between items-center h-full w-full">
