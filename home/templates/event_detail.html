@@ -2,16 +2,18 @@
 {% load static %}
 {% block content %}
     <body>
-    <div class="my-[40px] mb-[60px]">
+    {%  if event.picture %}
+    <div class="mb-[20px] md:mb-[60px]">
         <img src="{{ event.picture.url }}" alt="Picture not found" class="max-h-96 w-full object-cover">
     </div>
-    <div class="mx-28 flex flex-row w-auto justify-between my-[40px]">
+    {% endif %}
+    <div class="mx-8 md:mx-28 flex flex-col md:flex-row w-auto justify-between my-[40px]">
         <div class="w-2/3 lg:text-xl mr-10">
-            <h1 class="text-text-blue font-black text-4xl lg:text-6xl mb-10">{{ event.title }}</h1>
+            <h1 class="text-main font-black text-4xl lg:text-6xl mb-10">{{ event.title }}</h1>
             <p>{{ event.description }}</p>
         </div>
-        <div class="flex flex-col lg:text-xl ">
-            <h1 class="text-text font-black text-lg lg:text-2xl mb-6">Infos pratiques</h1>
+        <div class="flex flex-col lg:text-xl mt-[40px] md:mt-0">
+            <h1 class="text-black font-black text-lg lg:text-2xl mb-6">Infos pratiques</h1>
             <div class="flex flex-row items-center">
                 <img src="{% static "calendar.png" %}" class="max-h-5 h-full mr-3" alt="Picture not found">
                 <p class="lg:text-xl">{{ event.city }}, {{ event.address }}</p>
@@ -27,9 +29,9 @@
         </div>
     </div>
     {% if event.link %}
-        <div class="mx-28 my-[40px]">
+        <div class="mx-8 md:mx-28 my-[40px]">
             <a href="{{ event.link }}"
-               class="bg-button text-text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Réservation
+               class="bg-button text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Réservation
                 <img src="{% static "right-arrow.png" %}" alt="Picture not found" class="max-h-5"></a>
         </div>
     {% endif %}
