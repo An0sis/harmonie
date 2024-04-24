@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '^60abyf&t+cym_hxu-lk3sc8+5@$h#f6p)kaqa*2w3*9ms6h6i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.harmonie-obenheim.fr', '.localhost']
 CSRF_COOKIE_SECURE = True
