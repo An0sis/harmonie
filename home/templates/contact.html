@@ -3,7 +3,7 @@
     <body>
     <div class="flex w-full h-full justify-center items-center">
         <div class="flex justify-center flex-col items-stretch">
-            <h1 class="text-text-blue font-black text-3xl lg:text-5xl my-[20px]">Formulaire de contact</h1>
+            <h1 class="text-main font-black text-3xl lg:text-5xl my-[20px]">Formulaire de contact</h1>
             <form action="/contact" method="post" class="my-[40px] space-y-3">
                 {% csrf_token %}
                 <div class="space-y-1">
@@ -27,7 +27,7 @@
                               class="border-button border-2 rounded-lg py-1 px-2 w-full min-h-60"></textarea><br>
                 </div>
                 <input type="submit" value="Envoyer"
-                       class=" text-text-white my-[20px] bg-button rounded-full px-9 py-2 font-bold">
+                       class=" text-white my-[20px] bg-button rounded-full px-9 py-2 font-bold">
             </form>
         </div>
     </div>
