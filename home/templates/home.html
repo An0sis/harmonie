@@ -4,39 +4,38 @@
 
 {% block content %}
     <body>
-    <div class="mt-[40px]">
+    <div>
         {% for picture in pictures %}
             <img src="{{ picture.picture.url }}" alt="Picture not found" class="w-full">
         {% endfor %}
     </div>
-    <div class="px-28 my-12 w-full flex flex-col items-center justify-around font-black text-4xl text-text">
-       <p>Rejoignez nous a la salle des fetes d'Obenheim tous les vendredis a 20h</p>
+    <div class="my-12 mx-8 md:mx-28 flex flex-col items-center text-center justify-center font-black text-2xl lg:text-4xl text-black">
+        <p>Musique et convivialité tous les vendredis soirs à 20h</p>
         <div class="h-2 w-[15%] rounded-full bg-text mt-8"></div>
     </div>
-    <div class="mx-28 my-[40px] mb-[80px] flex flex-row justify-between items-stretch">
-        <div class="w-1/2 flex flex-col justify-center">
-            <h1 class="text-text-blue font-black text-3xl lg:text-5xl mb-8">Bienvenue sur le site de l'Harmonie
+    <div class="mx-8 md:mx-28 my-[40px] mb-[80px] flex flex-row justify-between items-stretch">
+        <div class="w-full text-center md:text-left md:w-1/2 flex flex-col justify-center">
+            <h1 class="text-main font-black text-3xl lg:text-5xl mb-8">Bienvenue sur le site de l'Harmonie
                 d'Obenheim</h1>
-            <p class="text-lg lg:text-2xl w-11/12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                varius turpis
-                luctus ante finibus, in volutpat nibh mollis. Phasellus mattis diam vel ligula mollis elementum. Ut eu
-                sapien at lectus pellentesque tempor eu in lacus. Proin facilisis eros tellus, ac dignissim lorem
-                egestas vel. Nullam et felis id ipsum feugiat blandit. </p>
+            <p class="text-lg lg:text-2xl w-full md:w-11/12">50 musiciens, 70 joyeux bénévoles, l’harmonie rassemble petits et
+                grands amoureux de la
+                musique. L’association a pour vocation de permettre à ses membres la pratique musicale en
+                orchestre d’harmonie et de diffuser de ses bonnes ondes lors de concerts et d’évènements.</p>
         </div>
-        <div class="w-1/2 flex justify-center">
-            <img src="{% static "big_logo.png" %}" alt="Picture not found" class=" max-h-80 object-contain ml-9">
+        <div class="hidden md:flex w-1/2 justify-center">
+            <img src="{% static "big_logo.png" %}" alt="Picture not found" class="max-h-80 object-contain ml-9">
         </div>
     </div>
     {% if events %}
     <h1 class="font-black text-3xl lg:text-5xl grid place-items-center">Évènements à venir</h1>
-    <div class="mx-28 flex flex-wrap justify-between">
+    <div class="mx-8 md:mx-28 flex flex-wrap items-stretch justify-between">
         {% for event in events %}
-            <div class="w-full xl:w-[45%]">
-                <div class="my-[60px] lg:my-[100px] flex flex-row justify-between items-stretch">
-                    <img src="{{ event.flyer.url }}" alt="Picture not found" class="w-1/2 rounded-xl object-cover">
-                    <div class="w-1/2 flex flex-col ml-11">
-                        <h1 class="text-text-blue font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
-                        <div class="flex flex-col flex-grow">
+            <div class="w-full xl:w-[48%]">
+                <div class="my-[30px] md:my-[60px] lg:my-[100px] flex flex-col md:flex-row justify-between items-stretch">
+                    <img src="{{ event.flyer.url }}" alt="Picture not found" class="my-[20px] md:my-0 w-full md:w-1/2 rounded-xl object-cover">
+                    <div class="w-full md:w-1/2 flex flex-col md:ml-11">
+                        <h1 class="text-main font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
+                        <div class="flex flex-col">
                             <div>
                                 <div class="flex flex-row items-center">
                                     <img src="{% static "calendar.png" %}" atl="Picture not found"
@@ -50,11 +49,12 @@
                                 </div>
                             </div>
                             <div class="my-6 text-sm lg:text-base">
-                                <p>{{ event.description }}</p>
+                                <p>{{ event.intro | linebreaksbr }}</p>
                             </div>
                             <div class="">
                                 <a href="{% url 'event_detail' event.url %}"
-                                   class="bg-button text-text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir plus
+                                   class="bg-button text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir
+                                    plus
                                     <img src="{% static "right-arrow.png" %}" alt="Picture not found"
                                          class="max-h-5"></a>
                             </div>

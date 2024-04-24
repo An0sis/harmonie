@@ -3,17 +3,17 @@
 
 {% block content %}
     <body>
-    <div class="mx-28">
+    <div class="mx-8 md:mx-28">
         {% if future_events %}
-            <h1 class="mt-[80px] mb-[10px] font-black text-3xl lg:text-5xl">Évènements à venir</h1>
+            <h1 class="mt-[20px] md:mt-[80px] mb-[10px] font-black text-3xl lg:text-5xl">Évènements à venir</h1>
             <div class="flex flex-wrap justify-between">
             {% for event in future_events %}
                 <div class="w-full xl:w-[48%]">
-                    <div class="my-[30px] lg:my-[50px] flex flex-row justify-between items-stretch">
+                    <div class="my-[30px] lg:my-[50px] flex flex-col md:flex-row justify-between items-stretch">
                         <img src="{{ event.flyer.url }}" alt="Picture not found"
-                             class="w-1/2 rounded-xl object-cover">
-                        <div class="w-1/2 flex flex-col ml-11">
-                            <h1 class="text-text-blue font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
+                             class="w-full md:w-1/2 my-[20px] md:my-0 rounded-xl object-cover">
+                        <div class="w-full md:w-1/2 flex flex-col md:ml-11">
+                            <h1 class="text-main font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
                             <div class="flex flex-col flex-grow">
                                 <div>
                                     <div class="flex flex-row items-center">
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="">
                                     <a href="{% url 'event_detail' event.url %}"
-                                       class="bg-button text-text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir plus
+                                       class="bg-button text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir plus
                                         <img src="{% static "right-arrow.png" %}" alt="Picture not found"
                                              class="max-h-5"></a>
                                 </div>
@@ -44,15 +44,15 @@
             </div>
         {% endif %}
         {% if past_events %}
-            <h1 class="mt-[80px] mb-[10px] font-black text-3xl lg:text-5xl">Évènements passés</h1>
+            <h1 class="mt-[20px] md:mt-[80px] mb-[10px] font-black text-3xl lg:text-5xl">Évènements passés</h1>
             <div class="flex flex-wrap justify-between">
                 {% for event in past_events %}
                     <div class="w-full xl:w-[48%]">
-                        <div class="my-[30px] lg:my-[50px] flex flex-row justify-between items-stretch">
+                        <div class="my-[30px] lg:my-[50px] flex flex-col md:flex-row justify-between items-stretch">
                             <img src="{{ event.flyer.url }}" alt="Picture not found"
-                                 class="w-1/2 rounded-xl object-cover">
-                            <div class="w-1/2 flex flex-col ml-11">
-                                <h1 class="text-text-blue font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
+                                 class="w-full md:w-1/2 rounded-xl object-cover my-[20px] md:my-0">
+                            <div class="w-full md:w-1/2 flex flex-col md:ml-11">
+                                <h1 class="text-main font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
                                 <div class="flex flex-col flex-grow">
                                     <div>
                                         <div class="flex flex-row items-center">
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="">
                                         <a href="{% url 'event_detail' event.url %}"
-                                           class="bg-button text-text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir plus
+                                           class="bg-button text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir plus
                                             <img src="{% static "right-arrow.png" %}" alt="Picture not found"
                                                  class="max-h-5"></a>
                                     </div>
