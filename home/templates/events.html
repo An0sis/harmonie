@@ -3,16 +3,16 @@
 
 {% block content %}
     <body>
-    <div class="mx-28">
+    <div class="mx-8 md:mx-28">
         {% if future_events %}
             <h1 class="mt-[80px] mb-[10px] font-black text-3xl lg:text-5xl">Évènements à venir</h1>
             <div class="flex flex-wrap justify-between">
             {% for event in future_events %}
                 <div class="w-full xl:w-[48%]">
-                    <div class="my-[30px] lg:my-[50px] flex flex-row justify-between items-stretch">
+                    <div class="my-[30px] lg:my-[50px] flex flex-col md:flex-row justify-between items-stretch">
                         <img src="{{ event.flyer.url }}" alt="Picture not found"
-                             class="w-1/2 rounded-xl object-cover">
-                        <div class="w-1/2 flex flex-col ml-11">
+                             class="w-full md:w-1/2 my-[20px] md:my-0 rounded-xl object-cover">
+                        <div class="w-full md:w-1/2 flex flex-col md:ml-11">
                             <h1 class="text-text-blue font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
                             <div class="flex flex-col flex-grow">
                                 <div>
@@ -48,10 +48,10 @@
             <div class="flex flex-wrap justify-between">
                 {% for event in past_events %}
                     <div class="w-full xl:w-[48%]">
-                        <div class="my-[30px] lg:my-[50px] flex flex-row justify-between items-stretch">
+                        <div class="my-[30px] lg:my-[50px] flex flex-col md:flex-row justify-between items-stretch">
                             <img src="{{ event.flyer.url }}" alt="Picture not found"
-                                 class="w-1/2 rounded-xl object-cover">
-                            <div class="w-1/2 flex flex-col ml-11">
+                                 class="w-full md:w-1/2 rounded-xl object-cover my-[20px] md:my-0">
+                            <div class="w-full md:w-1/2 flex flex-col md:ml-11">
                                 <h1 class="text-text-blue font-semibold text-2xl lg:text-4xl mb-4">{{ event.title }}</h1>
                                 <div class="flex flex-col flex-grow">
                                     <div>

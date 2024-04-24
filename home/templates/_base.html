@@ -18,6 +18,7 @@
     {% compress css %}
         <link rel="stylesheet"
               href="{% static 'src/output.css' %}">
+        <link rel="stylesheet" href="{% static 'src/base.css' %}">
     {% endcompress %}
 </head>
 <header class="hidden md:flex bg-background font-poppins my-[40px] mx-28">
@@ -39,7 +40,33 @@
                     class="link link-underline link-underline-black">Contact</span></a>
         </div>
     </div>
+</header>
 
+<header class="md:hidden bg-background font-poppins my-4 mx-4">
+    <div>
+        <img id='logo' src="{% static "burger-bar.png" %}" alt="Logo" class="w-10">
+        <div id="navbar" class="bg-background border-r-2 border-text-blue close">
+            <div class="w-full flex flex-row justify-end">
+                <img id='logo_temp' src="{% static "fermer.png" %}" alt="Logo" class="w-10 my-4 mx-4">
+            </div>
+            <div class="px-10 py-4 text-xl flex flex-col gap-y-8">
+                {% url 'home' as home_url %}
+                {% url 'events' as event_url %}
+                {% url 'galerie' as gallery_url %}
+                {% url 'contact' as contact_url %}
+                <a href="{{ home_url }}" class="{% if request.path == home_url %}font-black{% endif %}"><span
+                        class="link link-underline link-underline-black">ACCUEIL</span></a>
+                <a href="{{ event_url }}"
+                   class="{% if request.path|slice:':11' == '/evenements' %}font-black{% endif %}"><span
+                        class="link link-underline link-underline-black">ÉVÈNEMENTS</span></a>
+                <a href="{{ gallery_url }}" class="{% if request.path == gallery_url %}font-black{% endif %}"><span
+                        class="link link-underline link-underline-black">GALERIE</span></a>
+                <a href="{{ contact_url }}" class="{% if request.path == contact_url %}font-black{% endif %}"><span
+                        class="link link-underline link-underline-black">CONTACT</span></a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'src/navbar.js' %}"></script>
 </header>
 
 <body class="width-full flex flex-col min-h-screen bg-background h-screen font-poppins">
@@ -49,37 +76,18 @@
 </body>
 
 <footer class="bg-button mt-auto">
-    <div class="flex flex-row px-28 py-[20px] justify-between text-text-white font-poppins text-sm lg:text-lg font-bold">
+    <div class="flex flex-row px-8 py-[20px] justify-between text-text-white font-poppins text-sm lg:text-lg font-bold text-left">
         <div>
-            <p>Répétitions les vendredis soirs</p>
-            <p>20h à 22h</p>
+            <p>Répétitions les vendredis 20h-22h</p>
             <p>Salle des fêtes</p>
-            <p>Obenheim</p>
+            <p>4 rue du Stade</p>
+            <p>67230 Obenheim</p>
         </div>
-        <div class="flex flex-col items-end">
-            <p>Contact</p>
-            <p>Thierry HANTZBERG</p>
-            <p>06 88 28 69 20</p>
+        <div class="flex flex-col items-end text-right">
+            <a href="https://www.facebook.com/harmonieobenheim">
+                <img src="{% static "facebook.png" %}" alt="Facebook logo" class="max-h-10 lg:max-h-16">
+            </a>
         </div>
     </div>
 </footer>
-<style>
-    .link-underline {
-        border-bottom-width: 0;
-        background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
-        background-size: 0 3px;
-        background-position: 0 100%;
-        background-repeat: no-repeat;
-        transition: background-size .5s ease-in-out;
-    }
-
-    .link-underline-black {
-        background-image: linear-gradient(transparent, transparent), linear-gradient(#631D4C, #631D4C)
-    }
-
-    .link-underline:hover {
-        background-size: 100% 3px;
-        background-position: 0 100%
-    }
-</style>
 </html>
