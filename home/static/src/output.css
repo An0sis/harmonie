@@ -839,7 +839,7 @@ video {
 
 .bg-background {
   --tw-bg-opacity: 1;
-  background-color: rgb(242 236 206 / var(--tw-bg-opacity));
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity));
 }
 
 .bg-black {
@@ -991,7 +991,7 @@ video {
 
 .text-main {
   --tw-text-opacity: 1;
-  color: rgb(93 166 166 / var(--tw-text-opacity));
+  color: rgb(115 63 92 / var(--tw-text-opacity));
 }
 
 .text-white {
