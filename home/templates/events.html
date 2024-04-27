@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 <div class="my-6 text-sm lg:text-base">
-                                    <p>{{ event.intro }}</p>
+                                    <p>{{ event.intro | linebreaks }}</p>
                                 </div>
                                 <div class="">
                                     <a href="{% url 'event_detail' event.url %}"
@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                     <div class="my-6 text-sm lg:text-base">
-                                        <p>{{ event.intro }}</p>
+                                        <p>{{ event.intro | linebreaks}}</p>
                                     </div>
                                     <div class="">
                                         <a href="{% url 'event_detail' event.url %}"
