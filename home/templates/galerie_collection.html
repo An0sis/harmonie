@@ -1,0 +1,20 @@
+{% extends "_base.html" %}
+{% load static %}
+{% block content %}
+    <h1 class="font-black text-3xl lg:text-5xl grid place-items-center my-10 cursor-default">{{ collection.title }}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+     gap-2">
+        {% for picture in pictures %}
+            <div class="h-80 relative">
+                <img src="{{ picture.picture.url }}" alt="Picture not found"
+                     class="w-full h-full object-cover absolute cursor-pointer"
+                     onclick="openModal('{{ picture.picture.url }}')">
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="modal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70" style="display: none;">
+        <img id="modal-img" class="max-w-11/12 max-h-11/12" src="" alt="Picture not found">
+    </div>
+    <script src="{% static 'src/modal.js' %}"></script>
+{% endblock content %}

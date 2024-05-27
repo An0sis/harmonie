@@ -1,8 +1,26 @@
 {% extends "_base.html" %}
+{% load static %}
 {% block content %}
     <body>
-    <div class="flex justify-center items-center h-full mx-8">
-        <h1 class="text-main text-5xl font-black text-center">Page en cours de création</h1>
+    <div class="flex items-center mx-8 md:mx-28 flex-col mb-5">
+        <h1 class="font-black text-3xl lg:text-5xl my-28 text-center">Photos de l'Harmonie de Obenheim</h1>
+        <div class="flex flex-row flex-wrap justify-center h-auto gap-8">
+            {% for collection in collections %}
+                {% if collection.1|length > 0 %}
+                    <div class="flex flex-col mx-8 border-2 border-button rounded-lg pb-4 md:pb-8">
+                        <img src="{{ collection.0.miniature.url }}" alt="Picture not found" class="w-96 pb-4 md:pb-8 rounded-lg">
+                        <div class="font-black lg:text-xl pb-2 md:pb-6 px-4">{{ collection.0.title }}</div>
+                        <div class="px-4 pb-2 md:pb-4">
+                            <a href="{% url 'galerie_collection' collection.0.url %}"
+                               class="bg-button text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir
+                                la collection
+                                <img src="{% static "right-arrow.png" %}" alt="Picture not found"
+                                     class="max-h-5"></a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
     </body>
 {% endblock content %}

@@ -35,7 +35,8 @@
             <a href="{{ event_url }}"
                class="{% if request.path|slice:':11' == '/evenements' %}font-black{% endif %}"><span
                     class="link link-underline link-underline-black">Évènements</span></a>
-            <a href="{{ gallery_url }}" class="{% if request.path == gallery_url %}font-black{% endif %}"><span
+            <a href="{{ gallery_url }}"
+               class="{% if request.path|slice:':8' == '/galerie' %}font-black{% endif %}"><span
                     class="link link-underline link-underline-black">Galerie</span></a>
             <a href="{{ contact_url }}" class="{% if request.path == contact_url %}font-black{% endif %}"><span
                     class="link link-underline link-underline-black">Contact</span></a>
@@ -45,7 +46,10 @@
 
 <header class="md:hidden bg-background font-poppins my-4 mx-4">
     <div>
-        <img id='logo' src="{% static "burger-bar.png" %}" alt="Logo" class="w-10">
+        <div class="flex flex-row justify-between">
+            <img id='logo' src="{% static "burger-bar.png" %}" alt="Logo" class="w-10">
+            <img id='logo' src="{% static "logo.png" %}" alt="Logo" class="h-10">
+        </div>
         <div id="navbar" class="bg-background border-r-2 border-text-blue close">
             <div class="w-full flex flex-row justify-end">
                 <img id='logo_temp' src="{% static "fermer.png" %}" alt="Logo" class="w-10 my-4 mx-4">
