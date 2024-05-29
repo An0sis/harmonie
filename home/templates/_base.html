@@ -24,7 +24,9 @@
 </head>
 <header class="hidden md:flex bg-background font-poppins my-[40px] mx-28">
     <div class="flex justify-between items-center h-full w-full">
-        <img src="{% static "logo.png" %}" alt="Logo" class="w-1/6 lg:size-fit">
+        <a href="{% url 'home' %}">
+            <img src="{% static "logo.png" %}" alt="Logo" class="w-1/2 lg:size-fit">
+        </a>
         <div class="text-[15px] flex flex-row items-end gap-x-8 lg:text-[25px]">
             {% url 'home' as home_url %}
             {% url 'events' as event_url %}
@@ -48,7 +50,9 @@
     <div>
         <div class="flex flex-row justify-between">
             <img id='logo' src="{% static "burger-bar.png" %}" alt="Logo" class="w-10">
-            <img id='logo' src="{% static "logo.png" %}" alt="Logo" class="h-10">
+            <a href="{% url 'home' %}">
+                <img id='logo' src="{% static "logo.png" %}" alt="Logo" class="h-10">
+            </a>
         </div>
         <div id="navbar" class="bg-background border-r-2 border-text-blue close">
             <div class="w-full flex flex-row justify-end">
@@ -74,7 +78,7 @@
     <script src="{% static 'src/navbar.js' %}"></script>
 </header>
 
-<body class="width-full flex flex-col min-h-screen bg-background h-screen font-poppins">
+<body class="width-full flex flex-col min-h-screen bg-background h-screen font-poppins cursor-default">
 {% block content %}
 
 {% endblock content %}

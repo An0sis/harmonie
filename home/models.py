@@ -28,14 +28,12 @@ class Collection(models.Model):
 
 
 class Picture(models.Model):
-    title = models.CharField(max_length=200)
     picture = models.ImageField(upload_to="images/galerie")
     collection = models.ManyToManyField(Collection)
-    carrousel = models.BooleanField(default=False)
 
     def __str__(self):
         collections = ", ".join([str(collection) for collection in self.collection.all()])
-        return f"{collections} - {self.title}"
+        return f"{collections} - {self.picture.name}"
 
 
 class Contact(models.Model):
@@ -45,5 +43,5 @@ class Contact(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.nom
+        return self.prenom + self.nom
 # Create your models here.

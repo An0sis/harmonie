@@ -6,8 +6,7 @@ from django.core.mail import send_mail
 
 def home(view):
     event = Event.objects.filter(date__gte=timezone.now().date()).order_by('date')
-    pictures = Picture.objects.filter(carrousel=True)
-    return render(view, "home.html", {'events': event, 'pictures': pictures})
+    return render(view, "home.html", {'events': event})
 
 
 def event_detail(view, url):

@@ -2,25 +2,23 @@
 {% load static %}
 {% block content %}
     <body>
-    <div class="flex items-center mx-8 md:mx-28 flex-col mb-5">
-        <h1 class="font-black text-3xl lg:text-5xl my-28 text-center">Photos de l'Harmonie de Obenheim</h1>
-        <div class="flex flex-row flex-wrap justify-center h-auto gap-8">
-            {% for collection in collections %}
-                {% if collection.1|length > 0 %}
-                    <div class="flex flex-col mx-8 border-2 border-button rounded-lg pb-4 md:pb-8">
-                        <img src="{{ collection.0.miniature.url }}" alt="Picture not found" class="w-96 pb-4 md:pb-8 rounded-lg">
-                        <div class="font-black lg:text-xl pb-2 md:pb-6 px-4">{{ collection.0.title }}</div>
-                        <div class="px-4 pb-2 md:pb-4">
-                            <a href="{% url 'galerie_collection' collection.0.url %}"
-                               class="bg-button text-white text-base lg:text-xl font-semibold py-2 px-12 rounded-full inline-flex items-center justify-center gap-3 w-auto">Voir
-                                la collection
-                                <img src="{% static "right-arrow.png" %}" alt="Picture not found"
-                                     class="max-h-5"></a>
+    <div class="flex items-center flex-col">
+        <!-- <h1 class="font-black text-3xl lg:text-5xl my-28 text-center">Photos de l'Harmonie de Obenheim</h1> -->
+        {% for collection in collections %}
+            {% if collection.1|length > 0 %}
+                <a href="{% url 'galerie_collection' collection.0.url %}">
+                    <div class="h-[40vh] lg:h-[60vh] w-screen relative">
+                        <div class="absolute flex flex-col justify-center items-center w-full h-full inset-0 z-10 pointer-events-none">
+                            <h1 class="text-white text-3xl md:text-5xl lg:text-7xl font-black">{{ collection.0.title|upper }}</h1>
+                            <p class="text-white md:text-xl lg:text-2xl">Voir la collection</p>
                         </div>
+                        <img src="{{ collection.0.miniature.url }}" alt="Picture not found"
+                             class="h-full w-full object-cover brightness-50 hover:brightness-75 transition duration-300 ease-in-out">
+
                     </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+                </a>
+            {% endif %}
+        {% endfor %}
     </div>
     </body>
 {% endblock content %}
