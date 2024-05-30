@@ -1,3 +1,5 @@
+import os
+
 """
 Django settings for website project.
 
@@ -22,13 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '^60abyf&t+cym_hxu-lk3sc8+5@$h#f6p)kaqa*2w3*9ms6h6i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.harmonie-obenheim.fr', '.localhost']
+ALLOWED_HOSTS = ['.harmonie-obenheim.fr', '.localhost', '127.0.0.1']
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
-# Application definition
+#Application definition
 
 INSTALLED_APPS = [
     'home',
@@ -123,4 +125,14 @@ MEDIA_ROOT = BASE_DIR / "home/media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+COMPRESS_ROOT = BASE_DIR / 'home/static'
+COMPRESS_ENABLED = True
+STATICFILES_FINDERS = ['compressor.finders.CompressorFinder', 'django.contrib.staticfiles.finders.FileSystemFinder',
+                       'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hantzberg.joric@gmail.com'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')

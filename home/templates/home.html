@@ -5,9 +5,7 @@
 {% block content %}
     <body>
     <div>
-        {% for picture in pictures %}
-            <img src="{{ picture.picture.url }}" alt="Picture not found" class="w-full">
-        {% endfor %}
+            <img src="{% static 'harmonie_home.jpg' %}" alt="Picture not found" class="w-full">
     </div>
     <div class="my-12 mx-8 md:mx-28 flex flex-col items-center text-center justify-center font-black text-2xl lg:text-4xl text-black">
         <p>Musique et convivialité tous les vendredis soirs à 20h</p>

@@ -14,19 +14,27 @@ class Event(models.Model):
     picture = models.ImageField(upload_to="images/events", null=True, blank=True)
     flyer = models.ImageField(upload_to="images/events")
 
+    def __str__(self):
+        return self.title
+
+
+class Collection(models.Model):
+    title = models.CharField(max_length=200)
+    miniature = models.ImageField(upload_to="images/collection_miniature")
+    url = models.CharField(max_length=30)
 
     def __str__(self):
         return self.title
 
 
 class Picture(models.Model):
-    title = models.CharField(max_length=200)
     picture = models.ImageField(upload_to="images/galerie")
-    display = models.BooleanField(default=True)
-    carrousel = models.BooleanField(default=False)
+    collection = models.ManyToManyField(Collection)
 
     def __str__(self):
-        return self.title
+        collections = ", ".join([str(collection) for collection in self.collection.all()])
+        return f"{collections} - {self.picture.name}"
+
 
 class Contact(models.Model):
     nom = models.CharField(max_length=200)
@@ -35,5 +43,5 @@ class Contact(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.nom
+        return self.prenom + self.nom
 # Create your models here.
