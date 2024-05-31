@@ -24,7 +24,7 @@
             </div>
             <div class="flex flex-row items-center">
                 <img src="{% static "price-tag.png" %}" class="max-h-5 h-full mr-3" alt="Picture not found">
-                <p>{% if event.price == 0 %}Gratuit{% else %}{{ event.price }}€{% endif %}</p>
+                <p>{% if event.price == None or event.price == 0 %}Gratuit{% else %}{{ event.price }}€{% endif %}</p>
             </div>
         </div>
     </div>
